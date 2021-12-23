@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8"/>
+	<link rel="stylesheet" href="css/gamePageWithBot.css"/>
+	<title>21</title>
+</head>
+<body>
+	<script src="js/gameplayWithBot.js">
+	</script>
+	<button type="button" id="addCard" onclick="addCard(); addCardsBot()">Добавить карту</button>
+	<button type="button" id="gameEnd" onclick="result()">Вскрыться</button>
+	<button type="button" onclick="aNew()">Заново</button>
+	<div class="tableBorder">
+		<div class="table">
+			<div class="fieldBot">
+				<div class="cardsBot" id="cardsBot">
+				</div>
+			</div>
+			<div class="fieldPlayer">
+				<div class="cardsPlayer" id="cardsPlayer">
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
