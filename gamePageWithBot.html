@@ -2,15 +2,12 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8"/>
-	<link rel="stylesheet" href="css/gamePageWithBot.css"/>
+	<link rel="stylesheet" href="css/gamePage.css"/>
 	<title>21</title>
 </head>
 <body>
-	<script src="js/gameplayWithBot.js">
+	<script src="js/gameplay.js">
 	</script>
-	<button type="button" id="addCard" onclick="addCard(); addCardsBot()">Добавить карту</button>
-	<button type="button" id="gameEnd" onclick="result()">Вскрыться</button>
-	<button type="button" onclick="aNew()">Заново</button>
 	<div class="tableBorder">
 		<div class="table">
 			<div class="fieldBot">
@@ -22,6 +19,11 @@
 				</div>
 			</div>
 		</div>
+	</div>
+	<div class="fieldButtons">
+		<button type="button" id="addCard" onclick="addCard(); addCardsBot()">Добавить карту</button>
+		<button type="button" onclick="result(true)">Вскрыться</button>
+		<button type="button" onclick="aNew()">Заново</button>
 	</div>
 </body>
 </html>

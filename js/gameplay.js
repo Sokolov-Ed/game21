@@ -3,6 +3,14 @@ const getRandomInt = (cards) => {
 	let rand = Math.floor(Math.random()*cards.length);
 	return cards[rand];
 }
+// Перемешать колоду
+const shuffle = (cards) => {
+	for(let i = cards.length - 1; i > 0; i--){
+		let j = Math.floor(Math.random() * (i + 1));
+		[cards[i], cards[j]] = [cards[j], cards[i]];
+	}
+	return cards;
+}
 
 // Пустая колода карт
 let cards = [];
@@ -10,6 +18,7 @@ let cards = [];
 for(let i = 0; i < 36; i++){
 	cards[i] = i + 1;
 }
+shuffle(cards);
 
 let cardPlayer = 0, cardBot = 0, card; // Карта, которая будет браться с колоды
 let scorePlayer = 0, scoreBot = 0; // Сумма карт
@@ -20,6 +29,7 @@ let cardFirstPlayer, cardSecondPlayer, cardThirdPlayer, cardFourthPlayer, cardFi
 
 // Достать карту с колоды
 const setCard = (cards, table, visCard, isBot = false) => {
+	// Определение карты игрока или бота
 	if(isBot){
 		cardBot = getRandomInt(cards);
 		visCard.className = "cardBot";
@@ -31,6 +41,7 @@ const setCard = (cards, table, visCard, isBot = false) => {
 		card = cardPlayer;
 	}
 
+	// Определение карты
 	if(card >= 1 && card <= 4){
 		if(isBot)
 			scoreBot += 6;
@@ -103,29 +114,31 @@ const setCard = (cards, table, visCard, isBot = false) => {
 			scorePlayer += 11;
 		}
 	}
+	// Добавить карту на стол
 	table.append(visCard);
 
+	// Убрать карту из колоды
 	let idNum = card;
 	let position = cards.indexOf(idNum);
 	delete cards.splice(position, 1);
 }
 
 // Установить масть карты
-// red - пика
-// green - буба
-// darkviolet - креста
-// black - пика
 const setCardSuit = (card, visCard) => {
 	if(card === 1 || card === 5 || card === 9 || card === 13 || card === 17 || card === 21 || card === 25 || card === 29 || card === 33){
+		visCard.innerHTML += ' &#9829'; // чирва
 		visCard.style.color = "red";
 	}
 	else if(card === 2 || card === 6 || card === 10 || card === 14 || card === 18 || card === 22 || card === 26 || card === 30 || card === 34){
-		visCard.style.color = "green";
+		visCard.innerHTML += ' &#9830'; // буба
+		visCard.style.color = "red";
 	}
 	else if(card === 3 || card === 7 || card === 11 || card === 15 || card === 19 || card === 23 || card === 27 || card === 31 || card === 35){
-		visCard.style.color = "darkviolet";
+		visCard.innerHTML += ' &#9827'; // креста
+		visCard.style.color = "black";
 	}
 	else{
+		visCard.innerHTML += ' &#9824'; // пика
 		visCard.style.color = "black";
 	}
 }
@@ -457,7 +470,6 @@ const addCardsBot = () => {
 			let visCard = document.createElement('div');
 
 			setCard(cards, tableBot, visCard, true);
-			setCardSuit(card, visCard);
 
 			animationCardAppearanceBot(counterBot, visCard);
 		}
@@ -493,48 +505,66 @@ const addCard = () => {
 }
 
 // Получить результат игры
-const result = () => {
+const result = (isWithBot = false) => {
 	if(scorePlayer === 0){
 		alert("У вас нет карт...");
 	}
-	else if(scoreBot < 20 && counterBot < 5){
-		alert("Оу, не торопитесь. Бот ещё не все карты достал.");
+	else if(isWithBot){
+		if(scoreBot < 20 && counterBot < 5){
+			alert("Оу, не торопитесь. Бот ещё не все карты достал.");
+		}
+		else if((scorePlayer === 21) && (scoreBot === 21)){
+			alert("Это невероятно!!! Вы оба выиграли!");
+			location.reload();
+		}
+		else if(scorePlayer === 21){
+			alert(`Вы выиграли!\nВы набрали ${scorePlayer} очко.\nА бот - ${scoreBot}.`);
+			location.reload();
+		}
+		else if(scoreBot === 21){
+			alert(`Бот выиграл!\nОн набрал ${scoreBot} очко. А вы - ${scorePlayer}.`);
+			location.reload();
+		}
+		else if((scorePlayer < 21) && (scoreBot > 21)){
+			alert("Вы победили!");
+			location.reload();
+		}
+		else if((scorePlayer > 21) && (scoreBot < 21)){
+			alert("Бот победил!");
+			location.reload();
+		}
+		else if((scorePlayer > scoreBot) && (scorePlayer < 21)){
+			alert("Вы победили!");
+			location.reload();
+		}
+		else if((scorePlayer < scoreBot) && (scoreBot < 21)){
+			alert("Бот победил!");
+			location.reload();
+		}
+		else if((scorePlayer > 21) === (scoreBot > 21)){
+			alert("Вы оба проиграли!");
+			location.reload();
+		}
+		else if(scorePlayer === scoreBot){
+			alert("Вы набрали одинаковое кол-во.");
+			location.reload();
+		}
 	}
-	else if((scorePlayer === 21) && (scoreBot === 21)){
-		alert("Это невероятно!!! Вы оба выиграли!");
-		location.reload();
-	}
-	else if(scorePlayer === 21){
-		alert(`Вы выиграли!\nВы набрали ${scorePlayer} очко.\nА бот - ${scoreBot}.`);
-		location.reload();
-	}
-	else if(scoreBot === 21){
-		alert(`Бот выиграл!\nОн набрал ${scoreBot} очко. А вы - ${scorePlayer}.`);
-		location.reload();
-	}
-	else if((scorePlayer < 21) && (scoreBot > 21)){
-		alert("Вы победили!");
-		location.reload();
-	}
-	else if((scorePlayer > 21) && (scoreBot < 21)){
-		alert("Бот победил!");
-		location.reload();
-	}
-	else if((scorePlayer > scoreBot) && (scorePlayer < 21)){
-		alert("Вы победили!");
-		location.reload();
-	}
-	else if((scorePlayer < scoreBot) && (scoreBot < 21)){
-		alert("Бот победил!");
-		location.reload();
-	}
-	else if((scorePlayer > 21) === (scoreBot > 21)){
-		alert("Вы оба проиграли!");
-		location.reload();
-	}
-	else if(scorePlayer === scoreBot){
-		alert("Вы набрали одинаковое кол-во.");
-		location.reload();
+	else{
+		if(scorePlayer === 21){
+			alert(`Вы выиграли! У вас: ${scorePlayer}`);
+			location.reload();
+		}
+		else if(scorePlayer < 21){
+			let diff = 21 - scorePlayer;
+			alert(`Вам не хватило для победы: ${diff} очка(-ов)...`);
+			location.reload();
+		}
+		else if(scorePlayer > 21){
+			let diff = scorePlayer - 21;
+			alert(`Вы проиграли! У вас перебор в: ${diff} очка(-ов)...`);
+			location.reload();
+		}
 	}
 }
 

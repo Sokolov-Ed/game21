@@ -68,3 +68,21 @@
 	flex-wrap: wrap;
 	justify-content: center;
 }
+.fieldButtons{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.fieldButtons button{
+	margin: 10px;
+	padding: 10px 20px;
+	border-radius: 10px;
+	font-size: 16px;
+	border: 0px;
+	background-color: #15499F;
+	color: white;
+}
+.fieldButtons button:hover{
+	background-color: #2B74B9;
+	transition: 0.2s;
+}
