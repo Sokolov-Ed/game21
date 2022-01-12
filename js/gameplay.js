@@ -541,6 +541,10 @@ const result = (isWithBot = false) => {
 			alert("Бот победил!");
 			location.reload();
 		}
+		else if((scorePlayer === scoreBot) && (scorePlayer < 21) && (scoreBot < 21)){
+			alert("Вы оба набрали одинаковое кол-во.");
+			location.reload();
+		}
 		else if((scorePlayer > 21) === (scoreBot > 21)){
 			alert("Вы оба проиграли!");
 			location.reload();
