@@ -4,6 +4,7 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone
 	for(let i = 0; i < buttonsField.children.length; i++) {
 		buttonsField.children[i].style.fontSize = "36px";
 		buttonsField.children[i].style.padding = "20px 40px";
+		buttonsField.children[i].style.margin = "20px";
 	}
 }
 
@@ -135,19 +136,19 @@ const setCard = (cards, table, visCard, isBot = false) => {
 // Установить масть карты
 const setCardSuit = (card, visCard) => {
 	if(card === 1 || card === 5 || card === 9 || card === 13 || card === 17 || card === 21 || card === 25 || card === 29 || card === 33){
-		visCard.innerHTML += ' &#9829'; // чирва
+		visCard.innerHTML += '<br/>&#9829'; // чирва
 		visCard.style.color = "red";
 	}
 	else if(card === 2 || card === 6 || card === 10 || card === 14 || card === 18 || card === 22 || card === 26 || card === 30 || card === 34){
-		visCard.innerHTML += ' &#9830'; // буба
+		visCard.innerHTML += '<br/>&#9830'; // буба
 		visCard.style.color = "red";
 	}
 	else if(card === 3 || card === 7 || card === 11 || card === 15 || card === 19 || card === 23 || card === 27 || card === 31 || card === 35){
-		visCard.innerHTML += ' &#9827'; // креста
+		visCard.innerHTML += '<br/>&#9827'; // креста
 		visCard.style.color = "black";
 	}
 	else{
-		visCard.innerHTML += ' &#9824'; // пика
+		visCard.innerHTML += '<br/>&#9824'; // пика
 		visCard.style.color = "black";
 	}
 }
