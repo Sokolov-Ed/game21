@@ -1,3 +1,12 @@
+if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
+	let buttonsField = document.querySelector('.buttonsField');
+	buttonsField.style.flexDirection = "column";
+	for(let i = 0; i < buttonsField.children.length; i++) {
+		buttonsField.children[i].style.fontSize = "36px";
+		buttonsField.children[i].style.padding = "20px 40px";
+	}
+}
+
 // Получить случайную карту с колоды
 const getRandomInt = (cards) => {
 	let rand = Math.floor(Math.random()*cards.length);
