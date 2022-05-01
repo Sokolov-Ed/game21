@@ -1,0 +1,95 @@
+html {
+	height: 100%;
+	display: flex;
+	justify-content: flex-start;
+	flex-direction: column;
+}
+body {
+	margin: 20px 0 0;
+	min-width: 1040px;
+}
+.table{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin-top: 20px;
+	background-color: darkgreen;
+	width: 1000px;
+	height: 525px;
+	border-radius: 265px;
+	box-shadow: inset 0px 0px 25px 10px rgba(0, 0, 0, 0.5);
+}
+.card_player, .card_bot{
+	text-align: center;
+	width: 75px;
+	height: 125px;
+	border: 2px solid black;
+	font-size: 35px;
+	padding: 10px;
+	background-color: white;
+	box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.7);
+	z-index: 2px;
+}
+.card_player {
+	background-color: white;
+}
+.card_bot{
+	background-color: grey;
+}
+.disabled{
+	opacity: 0,5;
+}
+.table_border{
+	margin: auto;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	width: 1025px;
+	height: 550px;
+	background-color: rgb(184, 88, 00);
+	border-radius: 275px;
+	box-shadow: inset 0px 5px 15px 0px rgba(0, 0, 0, 0.5);
+}
+.field_player{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: flex-end;
+}
+.cards_player{
+	height: 295px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+.field_bot{
+	position: absolute;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: flex-start;
+}
+.cards_bot{
+	height: 295px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+.buttons_field {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.buttons_field button{
+	margin: 10px;
+	padding: 10px 20px;
+	border-radius: 10px;
+	font-size: 16px;
+	border: 0px;
+	background-color: #15499F;
+	color: white;
+}
+.buttons_field button:hover{
+	background-color: #2B74B9;
+	transition: 0.2s;
+}

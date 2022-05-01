@@ -42,12 +42,12 @@ const setCard = (cards, table, visCard, isBot = false) => {
 	// Определение карты игрока или бота
 	if(isBot){
 		cardBot = getRandomInt(cards);
-		visCard.className = "cardBot";
+		visCard.className = "card_bot";
 		card = cardBot;
 	}
 	else {
 		cardPlayer = getRandomInt(cards);
-		visCard.className = "cardPlayer";
+		visCard.className = "card_player";
 		card = cardPlayer;
 	}
 
@@ -157,7 +157,7 @@ const setCardSuit = (card, visCard) => {
 const animationCardAppearanceBot = (counter, visCard) => {
 	switch(counter){
 		case 1:{
-			visCard.classList.add("1stCardBot");
+			visCard.classList.add("1st_card_bot");
 			cardFirstBot = visCard;
 			cardFirstBot.style.transition = `transform 1000ms`;
 			let cardElementBot = cardFirstBot;
@@ -171,7 +171,7 @@ const animationCardAppearanceBot = (counter, visCard) => {
 			break;
 		}
 		case 2:{
-			visCard.classList.add("2ndCardBot");
+			visCard.classList.add("2nd_card_bot");
 			cardSecondBot = visCard;
 			cardSecondBot.style.transition = `transform 1000ms`;
 			let cardElementBot = cardSecondBot;
@@ -191,7 +191,7 @@ const animationCardAppearanceBot = (counter, visCard) => {
 			break;
 		}
 		case 3:{
-			visCard.classList.add("3rdCardBot");
+			visCard.classList.add("3rd_card_bot");
 			cardThirdBot = visCard;
 			let cardElementBot = cardThirdBot;
 			let animationBot = cardElementBot.animate([
@@ -211,7 +211,7 @@ const animationCardAppearanceBot = (counter, visCard) => {
 			break;
 		}
 		case 4:{
-			visCard.classList.add("4thCardBot");
+			visCard.classList.add("4th_card_bot");
 			cardFourthBot = visCard;
 			let cardElementBot = cardFourthBot;
 			let animationBot = cardElementBot.animate([
@@ -231,7 +231,7 @@ const animationCardAppearanceBot = (counter, visCard) => {
 			break;
 		}
 		case 5:{
-			visCard.classList.add("5thCardBot");
+			visCard.classList.add("5th_card_bot");
 			cardFifthBot = visCard;
 			let cardElementBot = cardFifthBot;
 			let animationBot = cardElementBot.animate([
@@ -258,7 +258,7 @@ const animationCardAppearanceBot = (counter, visCard) => {
 const animationCardAppearancePlayer = (counter, visCard) => {
 	switch(counter){
 		case 1:{
-			visCard.classList.add("1stCard");
+			visCard.classList.add("1st_card");
 			cardFirstPlayer = visCard;
 			cardFirstPlayer.style.transition = `transform 1000ms`;
 			let cardElement = cardFirstPlayer;
@@ -272,7 +272,7 @@ const animationCardAppearancePlayer = (counter, visCard) => {
 			break;
 		}
 		case 2:{
-			visCard.classList.add("2ndCard");
+			visCard.classList.add("2nd_card");
 			cardSecondPlayer = visCard;
 			cardFirstPlayer.style.transformOrigin = "50% 100%";
 			cardSecondPlayer.style.transformOrigin = "50% 100%";
@@ -306,7 +306,7 @@ const animationCardAppearancePlayer = (counter, visCard) => {
 			break;
 		}
 		case 3:{
-			visCard.classList.add("3rdCard");
+			visCard.classList.add("3rd_card");
 			cardThirdPlayer = visCard;
 			let cardElementFirst = cardFirstPlayer;
 			let animationForFirst = cardElementFirst.animate([
@@ -349,7 +349,7 @@ const animationCardAppearancePlayer = (counter, visCard) => {
 			break;
 		}
 		case 4:{
-			visCard.classList.add("4thCard");
+			visCard.classList.add("4th_card");
 			cardFourthPlayer = visCard;
 			let cardElementFirst = cardFirstPlayer;
 			let animationForFirst = cardElementFirst.animate([
@@ -401,7 +401,7 @@ const animationCardAppearancePlayer = (counter, visCard) => {
 			break;
 		}
 		case 5:{
-			visCard.classList.add("5thCard");
+			visCard.classList.add("5th_card");
 			cardFifthPlayer = visCard;
 			let cardElementFirst = cardFirstPlayer;
 			let animationForFirst = cardElementFirst.animate([
@@ -476,7 +476,7 @@ const addCardsBot = () => {
 	window.setInterval(function(){
 		counterBot++;
 		if(scoreBot < 20 && counterBot < 6){
-			let tableBot = document.getElementById("cardsBot");
+			let tableBot = document.getElementById("cards_bot");
 			let visCard = document.createElement('div');
 
 			setCard(cards, tableBot, visCard, true);
@@ -494,7 +494,7 @@ const addCard = () => {
 		return false;
 	}
 
-	let table = document.getElementById("cardsPlayer");
+	let table = document.getElementById("cards_player");
 	let visCard = document.createElement('div');
 
 	setCard(cards, table, visCard);
@@ -502,7 +502,7 @@ const addCard = () => {
 
 	animationCardAppearancePlayer(counterPlayer, visCard);
 
-	let delayButton = document.getElementById("addCard");
+	let delayButton = document.getElementById("add_card");
 	if(delayButton.disabled){
 		return;
 	}
